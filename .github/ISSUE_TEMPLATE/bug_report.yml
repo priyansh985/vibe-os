@@ -1,0 +1,31 @@
+name: Bug report
+description: Report reproducible problems in the VIBE-OS skill or CLI
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the affected command or file, expected result, and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Provide minimal, sanitized reproduction steps without secrets.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: VIBE-OS and Python version
+      placeholder: "VIBE-OS 1.0.0; Python 3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and logs
+      description: OS, agent integration, relevant error output. Remove tokens and personal data.

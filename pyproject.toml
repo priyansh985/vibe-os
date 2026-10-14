@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vibe-os"
+version = "1.0.0"
+description = "Adaptive, evidence-based workflow for AI-assisted software development"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "VIBE-OS contributors"}]
+dependencies = []
+
+[project.scripts]
+vibeos = "vibeos.cli:main"
+
+[tool.setuptools]
+packages = ["vibeos"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+vibeos = ["bundle/cursor-rule.mdc", "bundle/vibe-os/SKILL.md", "bundle/vibe-os/references/*.md", "bundle/vibe-os/assets/*.md"]

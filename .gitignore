@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+build/
+dist/
+.coverage
+
+# OS and IDE artifacts
+.DS_Store
+.idea/
+.vscode/
+.pytest_cache/
+
+# Generated VIBE-OS project state for local development
+.vibeos/

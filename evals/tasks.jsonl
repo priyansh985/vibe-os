@@ -1,0 +1,12 @@
+{"id":"T01","class":"feature","tier":"quick","scenario":"Add a local sorting option to an existing table view","success_signal":"Sorting is stable and does not alter underlying records"}
+{"id":"T02","class":"feature","tier":"standard","scenario":"Implement a paginated API response with a documented cursor","success_signal":"Pagination contract, boundaries, and previous clients work"}
+{"id":"T03","class":"feature","tier":"standard","scenario":"Add a configurable background job retry limit","success_signal":"Retries respect configuration and deduplicate completed work"}
+{"id":"T04","class":"feature","tier":"deep","scenario":"Add a permission-gated data export endpoint","success_signal":"Correct authorization, audit behavior and no cross-account leakage"}
+{"id":"T05","class":"bug","tier":"quick","scenario":"Correct a formatting edge case in a pure string function","success_signal":"Targeted and prior tests pass"}
+{"id":"T06","class":"bug","tier":"standard","scenario":"Fix an off-by-one pagination boundary","success_signal":"No skipped/duplicated results and no regression"}
+{"id":"T07","class":"bug","tier":"standard","scenario":"Resolve a concurrency duplicate-processing issue","success_signal":"Deterministic reproduction no longer fails and idempotency retained"}
+{"id":"T08","class":"bug","tier":"deep","scenario":"Repair an insecure object authorization check","success_signal":"Unauthorized access blocked with unchanged legitimate access"}
+{"id":"T09","class":"maintenance","tier":"quick","scenario":"Rename a private helper with no behavior changes","success_signal":"Same behavior and all references updated"}
+{"id":"T10","class":"maintenance","tier":"standard","scenario":"Refactor duplicated validation logic to a shared component","success_signal":"Public contract identical and tests pass"}
+{"id":"T11","class":"maintenance","tier":"standard","scenario":"Upgrade a noncritical library with compatibility checks","success_signal":"Build and regression checks pass on frozen dependencies"}
+{"id":"T12","class":"maintenance","tier":"deep","scenario":"Plan and implement a reversible schema migration","success_signal":"Forward/backward migrations and data integrity demonstrated"}
