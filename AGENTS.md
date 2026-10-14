@@ -1,6 +1,7 @@
 # VIBE-OS repository maintenance guidance
 
-- This is a portable skill and Python standard-library CLI. Maintain Python 3.10+ compatibility.
+- This is a portable skill, Python standard-library CLI, and native Node.js skill installer. Maintain Python 3.10+ compatibility.
+- For Node installer changes, add tests under `tests-node/` and run `npm test` plus `npm pack --dry-run`. The Node entry point is `bin/vibe-os.cjs`.
 - Prefer tests under `tests/` for behavioral changes. Run `python -m unittest discover -s tests -v`.
 - Keep the root `vibeos/bundle/vibe-os/SKILL.md` concise and other details in `references/`.
 - Don't introduce nonstandard runtime packages without a documented reason.

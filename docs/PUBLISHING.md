@@ -28,3 +28,19 @@ The bundle contains a local Git commit, but cannot create the remote repository.
 ## Release cautions
 
 VIBE-OS v1 is not proven to improve productivity and does not securely sandbox agent-executed checks. Do not enable arbitrary verification commands from unknown pull requests or depend on the package as a security boundary. This repository's CI tests run project-authored code from incoming pull requests with read-only token permissions.
+
+## Publish Node installer to npm (optional, separate action)
+
+The repository contains a Node.js `package.json` and `bin/vibe-os.cjs` so it can already be installed with `npx github:priyansh985/vibe-os` or `npm install -g github:priyansh985/vibe-os`. Those commands do not require an npm registry publication.
+
+Only a maintainer authenticated to an npm account that owns the name should publish:
+
+```sh
+npm test
+npm pack --dry-run
+npm view vibe-os name version   # verify name ownership/availability
+npm login
+npm publish --access public
+```
+
+If `vibe-os` is unavailable, choose an npm scope you control and update `package.json` + examples before publishing. **Do not claim bare `npx vibe-os` works until a published package is verified.** See [Node installation](NODE_INSTALLATION.md).

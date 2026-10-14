@@ -31,6 +31,31 @@ jobs:
           python -m vibeos --version
           python -m vibeos assess --risk low --scope small --uncertainty low --reversibility easy
 
+  node:
+    name: Node.js installer · Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Test Node bootstrapper
+        run: npm test
+      - name: Inspect package contents
+        run: npm pack --dry-run
+      - name: Smoke test local npm tarball
+        run: |
+          mkdir -p /tmp/vibe-os-node-smoke /tmp/vibe-os-node-prefix
+          npm pack --pack-destination /tmp/vibe-os-node-smoke
+          npm install --global --prefix /tmp/vibe-os-node-prefix /tmp/vibe-os-node-smoke/*.tgz
+          /tmp/vibe-os-node-prefix/bin/vibe-os --version
+          /tmp/vibe-os-node-prefix/bin/vibe-os init --project /tmp/vibe-os-node-smoke --agent all
+          /tmp/vibe-os-node-prefix/bin/vibe-os doctor --project /tmp/vibe-os-node-smoke
+
   package:
     name: Build distribution
     runs-on: ubuntu-latest

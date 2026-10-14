@@ -1,0 +1,35 @@
+{
+  "name": "vibe-os",
+  "version": "1.0.0",
+  "description": "Portable VIBE-OS agent skill installer for Codex, Claude Code, and Cursor",
+  "license": "MIT",
+  "author": "VIBE-OS contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyansh985/vibe-os.git"
+  },
+  "homepage": "https://github.com/priyansh985/vibe-os#readme",
+  "bugs": "https://github.com/priyansh985/vibe-os/issues",
+  "bin": {
+    "vibe-os": "bin/vibe-os.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "vibeos/bundle/",
+    "LICENSE",
+    "README.md",
+    "docs/INSTALLATION.md",
+    "docs/NODE_INSTALLATION.md"
+  ],
+  "scripts": {
+    "test": "node --test tests-node/*.test.cjs",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": ["vibe-coding", "coding-agent", "agentskills", "codex", "claude-code", "cursor", "ai", "developer-tools"],
+  "publishConfig": {
+    "access": "public"
+  }
+}

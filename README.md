@@ -1,6 +1,6 @@
 # VIBE-OS v1.0.0
 
-[Installation](docs/INSTALLATION.md) · [Examples](examples/walkthrough.md) · [Architecture](docs/RFC-001-architecture.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [Publishing](docs/PUBLISHING.md)
+[Installation](docs/INSTALLATION.md) · [Node.js / npm / npx](docs/NODE_INSTALLATION.md) · [Examples](examples/walkthrough.md) · [Architecture](docs/RFC-001-architecture.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [Publishing](docs/PUBLISHING.md)
 
 **Adaptive Vibe Engineering System** — an open, portable workflow for AI-assisted software development that prioritizes *verified behavior* over prompt volume, ceremony, or agent count.
 
@@ -11,9 +11,30 @@
 - Portable `vibe-os` skill using the Agent Skills `SKILL.md` format; focused supporting references and templates.
 - Adapters for Codex (`.agents/skills/vibe-os`), Claude Code (`.claude/skills/vibe-os`), Cursor (`.cursor/rules/vibe-os.mdc`).
 - Dependency-free Python CLI to install adapters, assess workflow risk, scaffold task contracts, run *explicitly chosen* verification checks, preserve evidence and summarize eval results.
+- Native Node.js 18+ skill installer (`vibe-os init` / `vibe-os doctor`) for GitHub-backed npm/npx installs; no Python needed for skill setup.
 - Task/risk protocol, engineering safety guidance, reproducible evaluation instructions and standard-library tests.
 
 ## Quick start
+
+### Node.js — npx / npm
+
+To install the VIBE-OS coding skill into your **current application project** without Python, use the GitHub-backed package:
+
+```sh
+npx --yes github:priyansh985/vibe-os init --agent all
+```
+
+Or install the Node installer globally from GitHub:
+
+```sh
+npm install --global github:priyansh985/vibe-os
+vibe-os init --project . --agent all
+vibe-os doctor --project .
+```
+
+The Node installer works with Codex, Claude Code, and Cursor, and does **not** implement all of the Python CLI's task/verification commands. The shorter `npx vibe-os init` command will only work **after the project is published on npm under that exact name**. See [Node.js install / npm publication guide](docs/NODE_INSTALLATION.md).
+
+### Python full toolkit
 
 Install from this GitHub repository (after publication):
 
@@ -100,6 +121,8 @@ See [evals/README.md](evals/README.md) for the task matrix, experimental design 
 
 ```bash
 python -m unittest discover -s tests -v
+npm test
+npm pack --dry-run
 ```
 
 ## Limitations
@@ -108,6 +131,7 @@ python -m unittest discover -s tests -v
 - Repository context selection and acceptance-criteria evaluation are performed by the agent/human, not automated by the CLI.
 - The CLI's commands run with your user permissions and could have side effects. The caller must check them first.
 - Cursor gets a concise project rule adapter rather than the full skill auto-activation; exact product behavior can change.
+- The Node command is a **bootstrapper** (`init` / `doctor`), not a replacement for the seven-command Python toolkit.
 - Parallel coding, deployment automation, audit guarantees, and hosted persistence are intentionally out of scope for v1.
 
 ## Community and maintenance

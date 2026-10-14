@@ -1,8 +1,26 @@
 # Installation guide
 
-VIBE-OS has two installation approaches: the complete CLI + skill installer, or skill-only copy. **Python 3.10+** is required for the CLI. The skill itself is Markdown and does not require Python.
+VIBE-OS has three installation approaches: the native Node.js skill installer, the full Python CLI + skill installer, or skill-only copy. **Python 3.10+** is required for the CLI. The skill itself is Markdown and does not require Python.
 
-## Option A — Python CLI (recommended)
+## Option A — Node.js installer (npm / npx)
+
+Node.js 18+ is sufficient to install the skill with no Python. From your target application repository:
+
+```sh
+npx --yes github:priyansh985/vibe-os init --agent all
+```
+
+Or install the bootstrapper globally from GitHub:
+
+```sh
+npm install --global github:priyansh985/vibe-os
+vibe-os init --project . --agent all
+vibe-os doctor --project .
+```
+
+**Important:** `npx vibe-os init` and `npm install -g vibe-os` by the bare package name require an npm registry publication that has **not been performed**. The Node bootstrapper supports `init` and `doctor`; use Python for additional CLI commands. See [Node.js installation](NODE_INSTALLATION.md).
+
+## Option B — Python CLI (complete toolkit)
 
 ### Install from GitHub (once published)
 
@@ -76,7 +94,7 @@ On Windows PowerShell, enter commands on one line instead of using the Unix cont
 
 The verification command runs without a shell but has the current user's permissions; it is **not sandboxed**. Do not pass tokens/passwords into command arguments.
 
-## Option B — skill only (no Python)
+## Option C — skill only (no Node or Python)
 
 Copy the entire [`vibeos/bundle/vibe-os/`](../vibeos/bundle/vibe-os/) directory into your repository's `.agents/skills/vibe-os/` (Codex) or `.claude/skills/vibe-os/` (Claude Code). Keep all `references/` and `assets/` alongside `SKILL.md`.
 
